@@ -15,23 +15,11 @@
 // You should have received a copy of the GNU General Public License along
 // with toy_compiler.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "misc_includes.hpp"
+#ifndef misc_includes_hpp
+#define misc_includes_hpp
 
-#include "lex_class.hpp"
-#include "token_types.hpp"
+#include "liborangepower_src/misc_includes.hpp"
+#include "liborangepower_src/misc_types.hpp"
+#include "liborangepower_src/misc_output_classes.hpp"
 
-using toy::tok;
-using std::ostream;
-
-ostream& operator << ( ostream& os, tok t )
-{
-	return ( os << static_cast<int>(t) );
-}
-
-int main( int argc, char** argv )
-{
-	printout( tok::tadd, " ", tok::tge, " ", tok::tle, " ", tok::tasr, 
-		"\n" );
-	
-	return 0;
-}
+#endif		// misc_includes_hpp

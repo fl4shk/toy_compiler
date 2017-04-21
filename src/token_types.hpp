@@ -15,23 +15,47 @@
 // You should have received a copy of the GNU General Public License along
 // with toy_compiler.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "misc_includes.hpp"
+#ifndef token_types_hpp
+#define token_types_hpp
 
-#include "lex_class.hpp"
-#include "token_types.hpp"
-
-using toy::tok;
-using std::ostream;
-
-ostream& operator << ( ostream& os, tok t )
+namespace toy
 {
-	return ( os << static_cast<int>(t) );
-}
 
-int main( int argc, char** argv )
+enum class tok
 {
-	printout( tok::tadd, " ", tok::tge, " ", tok::tle, " ", tok::tasr, 
-		"\n" );
+	tadd = '+',
+	tsub = '-',
+	tand = '&',
+	tor  = '|',
+	txor = '^',
+	tgt  = '>',
+	tlt  = '<',
+	teq  = '=',
 	
-	return 0;
+	tge  = 9001,
+	tle,
+	tne,
+	tlsl,
+	tlsr,
+	tasr,
+	
+	tld,
+	tst,
+	tsel,
+	tkill,
+	
+	tword,
+	tint,
+	tuint,
+	
+	tif,
+	telse,
+	twhile,
+	tbreak,
+	tundef,
+};
+
 }
+
+
+#endif		// token_types_hpp

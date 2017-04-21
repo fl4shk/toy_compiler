@@ -15,23 +15,38 @@
 // You should have received a copy of the GNU General Public License along
 // with toy_compiler.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "misc_includes.hpp"
+#ifndef lex_class_hpp
+#define lex_class_hpp
 
-#include "lex_class.hpp"
+#include "misc_includes.hpp"
 #include "token_types.hpp"
 
-using toy::tok;
-using std::ostream;
-
-ostream& operator << ( ostream& os, tok t )
+namespace toy
 {
-	return ( os << static_cast<int>(t) );
-}
 
-int main( int argc, char** argv )
+class lex
 {
-	printout( tok::tadd, " ", tok::tge, " ", tok::tle, " ", tok::tasr, 
-		"\n" );
+private:		// variables
 	
-	return 0;
+	tok internal_lookt;
+	
+	
+private:		// functions
+	inline tok& set_lookt( tok n_lookt )
+	{
+		internal_lookt = n_lookt;
+		return internal_lookt;
+	}
+	
+public:		// functions
+	
+	inline tok lookt() const
+	{
+		return internal_lookt;
+	}
+	
+};
+
 }
+
+#endif		// lex_class_hpp
