@@ -21,17 +21,10 @@
 #include "token_types.hpp"
 
 using toy::tok;
-using std::ostream;
 
-ostream& operator << ( ostream& os, tok t )
-{
-	return ( os << static_cast<int>(t) );
-}
 
 int main( int argc, char** argv )
 {
-	printout( tok::tadd, " ", tok::tge, " ", tok::tle, " ", tok::tasr, 
-		"\n" );
 	
 	return 0;
 }

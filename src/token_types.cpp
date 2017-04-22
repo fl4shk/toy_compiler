@@ -15,36 +15,9 @@
 // You should have received a copy of the GNU General Public License along
 // with toy_compiler.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef lex_class_hpp
-#define lex_class_hpp
-
-#include "misc_defines.hpp"
-#include "misc_includes.hpp"
 #include "token_types.hpp"
 
-
-
-namespace toy
+std::ostream& operator << ( std::ostream& ostm, toy::tok t )
 {
-
-class lex
-{
-private:		// variables
-	
-	int internal_lookc;
-	tok internal_lookt;
-	
-	
-private:		// functions
-	gen_setter_by_val(lookc);
-	gen_setter_by_val(lookt);
-	
-public:		// functions
-	gen_getter_by_val(lookc);
-	gen_getter_by_val(lookt);
-	
-};
-
+	return ( ostm << static_cast<int>(t) );
 }
-
-#endif		// lex_class_hpp

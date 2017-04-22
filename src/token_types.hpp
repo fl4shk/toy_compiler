@@ -18,6 +18,8 @@
 #ifndef token_types_hpp
 #define token_types_hpp
 
+#include <iostream>
+
 namespace toy
 {
 
@@ -56,6 +58,8 @@ enum class tok
 };
 
 }
+
+std::ostream& operator << ( std::ostream& ostm, toy::tok t );
 
 
 #endif		// token_types_hpp
