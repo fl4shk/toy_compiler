@@ -4,7 +4,6 @@
 SHARED_SRC_DIRS:=$(CURDIR) src
 CXX_DIRS:=$(SHARED_SRC_DIRS)
 
-
 # End of source directories
 
 
@@ -20,11 +19,11 @@ ifdef DEBUG
 	DEBUG_SUFFIX:=$(ALWAYS_DEBUG_SUFFIX)
 endif
 
-# This is likely specific to *nix... but then again, the entire makefile is
-# probably specific to *nix!
+# This is the name of the output file.  Change this if needed!
 PROJ:=$(shell basename $(CURDIR))$(DEBUG_SUFFIX).elf
 
 INITIAL_BASE_FLAGS:=-Wall
+
 
 # Compilers and initial compiler flags
 CXX:=$(PREFIX)g++
@@ -34,6 +33,7 @@ LD:=$(CXX)
 
 # Initial linker flags
 LD_FLAGS:=$(LD_FLAGS) -lm
+
 
 
 ifdef DEBUG
@@ -56,13 +56,13 @@ LD_FLAGS:=$(LD_FLAGS) $(EXTRA_LD_FLAGS)
 
 
 
+
 # Generated directories
 OBJDIR:=objs$(DEBUG_SUFFIX)
 DEPDIR:=deps$(DEBUG_SUFFIX)
 PREPROCDIR:=preprocs$(DEBUG_SUFFIX)
 
-
-# Directories to search, specified above
+# Directories to search, specified at the top of this file
 export VPATH	:=	\
 	$(foreach DIR,$(CXX_DIRS),$(CURDIR)/$(DIR)) \
 
@@ -74,13 +74,15 @@ CXX_PFILES:=$(CXX_SOURCES:%.cpp=$(DEPDIR)/%.P)
 
 
 # Compiler-generated files
+# OFILES are object code files (extension .o)
 OFILES:=$(CXX_OFILES) 
+# PFILES are used for automatic dependency generation
 PFILES:=$(CXX_PFILES) 
-
 
 # Preprocessed output of only C++ files
 CXX_EFILES:=$(CXX_SOURCES:%.cpp=$(PREPROCDIR)/%.E)
 EFILES:=$(CXX_EFILES)
+
 
 all : all_pre $(OFILES)
 	$(LD) $(OBJDIR)/*.o -o $(PROJ) $(LD_FLAGS)
@@ -96,6 +98,7 @@ all_pre :
 
 # This sed script is basically a hack.
 sed_script:=$(shell echo "sed -e 's/\#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' -e '/^$$/ d' -e 's/$$/ :/'")
+
 
 # Here's where things get really messy.
 
@@ -120,6 +123,7 @@ only_preprocess_pre :
 
 $(CXX_EFILES) : $(PREPROCDIR)/%.E : %.cpp
 	$(CXX) $(CXX_FLAGS) -E $< -o $@
+
 
 #¯\(°_o)/¯
 
