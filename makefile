@@ -73,6 +73,7 @@ CXX_PFILES:=$(CXX_SOURCES:%.cpp=$(DEPDIR)/%.P)
  
 
 
+# Compiler-generated files
 OFILES:=$(CXX_OFILES) 
 PFILES:=$(CXX_PFILES) 
 
