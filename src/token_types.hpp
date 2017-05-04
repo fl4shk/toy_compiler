@@ -19,11 +19,12 @@
 #define token_types_hpp
 
 #include <iostream>
+#include "liborangepower_src/gen_getter_setter.hpp"
 
 namespace toy
 {
 
-enum class tok
+enum class hi_tok
 {
 	tadd = '+',
 	tsub = '-',
@@ -59,6 +60,7 @@ enum class tok
 
 }
 
+gen_enum_ostm_sl_decl
 std::ostream& operator << ( std::ostream& ostm, toy::tok t );
 
 
