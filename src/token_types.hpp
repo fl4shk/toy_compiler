@@ -19,7 +19,7 @@
 #define token_types_hpp
 
 #include <iostream>
-#include "liborangepower_src/gen_getter_setter.hpp"
+#include "liborangepower_src/gen_getter_setter_defines.hpp"
 
 namespace toy
 {
