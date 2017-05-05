@@ -24,7 +24,7 @@
 namespace toy
 {
 
-enum class hi_tok
+enum class tok
 {
 	tadd = '+',
 	tsub = '-',
@@ -60,7 +60,6 @@ enum class hi_tok
 
 }
 
-gen_enum_ostm_sl_decl
 std::ostream& operator << ( std::ostream& ostm, toy::tok t );
 
 

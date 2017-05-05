@@ -18,7 +18,6 @@
 #ifndef lex_class_hpp
 #define lex_class_hpp
 
-#include "misc_defines.hpp"
 #include "misc_includes.hpp"
 #include "token_types.hpp"
 

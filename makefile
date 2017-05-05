@@ -22,12 +22,11 @@ endif
 # This is the name of the output file.  Change this if needed!
 PROJ:=$(shell basename $(CURDIR))$(DEBUG_SUFFIX).elf
 
-INITIAL_BASE_FLAGS:=-Wall
 
 
 # Compilers and initial compiler flags
 CXX:=$(PREFIX)g++
-CXX_FLAGS:=$(CXX_FLAGS) -std=c++17 $(INITIAL_BASE_FLAGS)
+CXX_FLAGS:=$(CXX_FLAGS) -std=c++17 -Wall
 
 LD:=$(CXX)
 
@@ -60,7 +59,6 @@ LD_FLAGS:=$(LD_FLAGS) $(EXTRA_LD_FLAGS)
 # Generated directories
 OBJDIR:=objs$(DEBUG_SUFFIX)
 DEPDIR:=deps$(DEBUG_SUFFIX)
-PREPROCDIR:=preprocs$(DEBUG_SUFFIX)
 
 # Directories to search, specified at the top of this file
 export VPATH	:=	\
@@ -79,9 +77,6 @@ OFILES:=$(CXX_OFILES)
 # PFILES are used for automatic dependency generation
 PFILES:=$(CXX_PFILES) 
 
-# Preprocessed output of only C++ files
-CXX_EFILES:=$(CXX_SOURCES:%.cpp=$(PREPROCDIR)/%.E)
-EFILES:=$(CXX_EFILES)
 
 
 all : all_pre $(OFILES)
@@ -112,18 +107,6 @@ $(CXX_OFILES) : $(OBJDIR)/%.o : %.cpp
 
 
 -include $(PFILES)
-
-
-only_preprocess : only_preprocess_pre $(EFILES)
-	@#
-
-only_preprocess_pre : 
-	mkdir -p $(PREPROCDIR)
-
-
-$(CXX_EFILES) : $(PREPROCDIR)/%.E : %.cpp
-	$(CXX) $(CXX_FLAGS) -E $< -o $@
-
 
 #¯\(°_o)/¯
 
