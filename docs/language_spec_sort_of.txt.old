@@ -1,0 +1,69 @@
+--Some of the C-style features (and what's missing)--
+
+Variables are all **SIGNED** ints, and ints are 32-bit.  This is enforced
+in the implementation by using int32_t.
+
+No strings.
+
+No character literals.
+
+No arrays.
+
+No functions.
+
+No custom types at all.
+
+No pointers.
+
+No preprocessor.
+
+No "const" specifier.
+
+No "static" specifier (why would you need "static" if there are no
+functions and only one source file?).
+
+No switch statements.
+
+No labels or gotos.
+
+
+C-style "while" loops, with "break" and "continue" exist.
+No "for" loops.
+
+
+C-style "if", "else if", and "else" exist.
+
+
+--Scope Stuff--
+Non-global scopes still exist and can be created C style, just without
+there being functions.  C-style { ... } scopes still exist.
+
+The "most outer" scope is considered "global" scope.
+
+Variables have to be declared at the top of a scope ala C89.  That includes
+global scope.
+
+
+--Misc.--
+No input and output capabilities whatsoever.
+
+
+--Operators--
+C-style bitwise operators exist.
+No "X="-style operators.
+
+No "/" and "%" operators.  "&" can be used for modulo by powers of two in
+the usual way.
+
+C-style "*" operator exists.
+
+
+
+No operator precedence; everything evaluated from left-to-right.
+Parentheses **MUST** be used manually to ensure operator precedence, 
+
+
+
+--Code Generation--
+It's just going to generate some intermediate representation.
+
