@@ -15,8 +15,8 @@
 // You should have received a copy of the GNU General Public License along
 // with toy_compiler.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef lex_class_hpp
-#define lex_class_hpp
+#ifndef lexer_class_hpp
+#define lexer_class_hpp
 
 #include "misc_includes.hpp"
 #include "token_types.hpp"
@@ -26,24 +26,25 @@
 namespace toy
 {
 
-class lex
+class lexer
 {
 private:		// variables
 	
-	int internal_lookc;
-	tok internal_lookt;
+	size_t internal_lineno = 1;
+	tok internal_nextc = ' ';
+	tok internal_nextt = ' ';
 	
 	
 private:		// functions
-	gen_setter_by_val(lookc);
-	gen_setter_by_val(lookt);
+	gen_setter_by_val(nextc);
+	gen_setter_by_val(nextt);
 	
 public:		// functions
-	gen_getter_by_val(lookc);
-	gen_getter_by_val(lookt);
+	gen_getter_by_val(nextc);
+	gen_getter_by_val(nextt);
 	
 };
 
 }
 
-#endif		// lex_class_hpp
+#endif		// lexer_class_hpp

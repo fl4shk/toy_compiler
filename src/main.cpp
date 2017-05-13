@@ -17,14 +17,42 @@
 
 #include "misc_includes.hpp"
 
-#include "lex_class.hpp"
+#include "lexer_class.hpp"
 #include "token_types.hpp"
 
-using toy::tok;
 
+namespace toy
+{
+
+std::FILE* get_copy_of_stdin()
+{
+	std::FILE* copy_of_stdin = std::tmpfile();
+	
+	int c = ' ';
+	
+	while ( c != EOF )
+	{
+		c = std::getc(stdin);
+		
+		if ( c != EOF )
+		{
+			std::putc( c, copy_of_stdin );
+		}
+	}
+	
+	std::rewind(copy_of_stdin);
+	
+	
+	return copy_of_stdin;
+}
+
+}
 
 int main( int argc, char** argv )
 {
 	
+	
+	
 	return 0;
 }
+
